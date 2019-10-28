@@ -1,13 +1,14 @@
 import { settings, select, classNames } from './settings.js';
 import Product from './components/Product.js';
-import Cart from './components/Cart';
+import Cart from './components/Cart.js';
 
 const app = {
   initPages: function () {
     const thisApp = this;
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
-    thisApp.activatePage(thisApp.pages[0].id);
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);
 
+    thisApp.activatePage(thisApp.pages[0].id);
   },
   activatePage: function (pageId) {
     const thisApp = this;
@@ -26,6 +27,12 @@ const app = {
 
 
     // add class 'active' to links pages, remove from non-mathing
+    for (let link of thisApp.navLinks) {
+      link.classList.toggle(
+        classNames.nav.active,
+        link.getAttribute('href') === '#' + pageId
+      );
+    }
 
   },
 
