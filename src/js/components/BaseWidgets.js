@@ -1,17 +1,22 @@
 
-
-
 class BaseWidget {
 
-  cnstructor(wrapperElement, initialValue) {
+  constructor(wrapperElement, initialValue) {
+
     const thisWidget = this;
 
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
 
-    thisWidget = initialValue;
+    thisWidget.correctValue = initialValue;
 
   }
+  get value() {
+    const thisWidget = this;
+
+    return thisWidget.correctValue;
+  }
+
   setValue(value) {
     const thisWidget = this;
 
@@ -24,8 +29,8 @@ class BaseWidget {
     // thisWidget.announce();
     // thisWidget.input.value = thisWidget.value;
 
-    if (newValue != thisWidget.input.value && thisWidget.isValid(newValue)) {
-      thisWidget.value = newValue;
+    if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
+      thisWidget.correctValue = newValue;
       thisWidget.announce();
     }
     thisWidget.renderValue();
@@ -38,14 +43,14 @@ class BaseWidget {
     return !isNaN(value);
 
   }
-  renderValue(){
-    const thisWidget=this;
-    thisWidget.dom.wrapper.innerHTML=thisWidget.value;
+  renderValue() {
+    const thisWidget = this;
+    thisWidget.dom.wrapper.innerHTML = thisWidget.value;
   }
   announce() {
     const thisWidget = this;
     const event = new CustomEvent('updated', { bubbles: true });
-    thisWidget.element.dispatchEvent(event);
+    thisWidget.dom.wrapper.dispatchEvent(event);
   }
 }
 
