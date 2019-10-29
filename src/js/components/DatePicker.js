@@ -1,6 +1,6 @@
 import { settings, select } from '../settings.js';
-import utils from 'js/utils.js';
-import BaseWidget from '/js/components/BaseWidget.js';
+import { utils } from './../utils.js';
+import BaseWidget from './BaseWidgets.js';
 
 class DatePicker extends BaseWidget {
   constructor(wrapper) {
@@ -20,3 +20,5 @@ class DatePicker extends BaseWidget {
     thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
   }
 }
+
+export default DatePicker;
