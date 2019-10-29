@@ -38,6 +38,10 @@ class BaseWidget {
     return !isNaN(value);
 
   }
+  renderValue(){
+    const thisWidget=this;
+    thisWidget.dom.wrapper.innerHTML=thisWidget.value;
+  }
 }
 
 export default BaseWidget;
