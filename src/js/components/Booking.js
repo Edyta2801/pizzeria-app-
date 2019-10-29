@@ -48,6 +48,16 @@ class Booking {
       eventsRepeat: settings.db.url + '/' + settings.db.event + '?' + params.eventsRepeat.join('&'),
     };
     console.log('getData urls', urls);
+
+
+    fetch(urls.booking)
+      .then(function (bookingsResponse) {
+        return bookingsResponse.json();
+      })
+      .then(function (bookings) {
+        console.log(bookings);
+      });
+
   }
 
   render(element) {
