@@ -66,6 +66,12 @@ const app = {
     }
 
   },
+  initBooking() {
+    const thisApp = this;
+    thisApp.bookingElement = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking(thisApp.bookingElement);
+
+  },
 
   initMenu: function () {
     const thisApp = this;
@@ -122,6 +128,7 @@ const app = {
     console.log('settings:', settings);
     // console.log('templates:', templates);
 
+    thisApp.initBooking();
     thisApp.initPages();
     thisApp.initData();
     // thisApp.initMenu();
