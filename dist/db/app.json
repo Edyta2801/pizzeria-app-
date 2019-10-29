@@ -217,28 +217,7 @@
       }
     }
   ],
-  "order": [
-    {
-      "testAddress": "test",
-      "totalPrice": 20,
-      "address": {},
-      "phone": {},
-      "totalNumber": 0,
-      "subtotalPrice": 0,
-      "products": [],
-      "id": 1
-    },
-    {
-      "testAddress": "test",
-      "totalPrice": 20,
-      "address": {},
-      "phone": {},
-      "totalNumber": 0,
-      "subtotalPrice": 0,
-      "products": [],
-      "id": 2
-    }
-  ],
+  "order": [],
   "event": [
     {
       "id": 1,
@@ -299,5 +278,17 @@
       ]
     }
   ],
-  "booking": []
+  "booking": [
+    {
+      "id": 1,
+      "date": "2019-10-30",
+      "hour": "16:00",
+      "table": 1,
+      "duration": 3,
+      "ppl": 4,
+      "starters": [
+        "water"
+      ]
+    }
+  ]
 }
