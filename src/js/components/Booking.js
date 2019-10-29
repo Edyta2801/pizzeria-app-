@@ -21,20 +21,22 @@ class Booking {
 
     // parametry z db.settings
 
-
-    
+    const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate);
+    const endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate);
 
     const params = {
       booking: [
-        settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate),
-        settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate),
+        startDateParam,
+        endDateParam,
       ],
       eventsCurrent: [
-        settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate),
-        settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate),
+        settings.db.notRepeatParam,
+        startDateParam,
+        endDateParam,
       ],
       eventsRepeat: [
-        settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate),
+        settings.db.repeatParam,
+        endDateParam,
       ],
     };
 
