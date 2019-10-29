@@ -37,7 +37,7 @@ class AmountWidget extends BaseWidget {
       thisWidget.value = newValue;
       thisWidget.announce();
     }
-    thisWidget.renderValue;
+    thisWidget.renderValue();
 
   }
   parseValue(value) {
