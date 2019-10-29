@@ -11,13 +11,16 @@ class BaseWidget {
     thisWidget.correctValue = initialValue;
 
   }
+
+  // metoda get (getter) która jest wykonywana przy każdej próbie odczytania wartości właściwościvalue
   get value() {
     const thisWidget = this;
 
     return thisWidget.correctValue;
   }
 
-  setValue(value) {
+  // metoda set (setter) która jest wykonywana przy każdej próbie ustawienia nowej wartości właściwościvalue
+  set value(value) {
     const thisWidget = this;
 
     const newValue = thisWidget.parseValue(value);
