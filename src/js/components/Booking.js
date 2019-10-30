@@ -92,17 +92,18 @@ class Booking {
     }
 
     const startHour = utils.hourToNumber(hour);
+    for (let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5) {
+      console.log('loop', hourBlock);
 
-    if (typeof thisBooking.booked[date][startHour] == 'undefined') {
-      thisBooking.booked[date][startHour] = [];
 
-      thisBooking.booked[date][startHour].push(table);
-
-      for (let hourBlock = startHour; hourBlock < startHour+duration; hourBlock+=0.5) {
-        console.log('loop', hourBlock);
+      if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
+        thisBooking.booked[date][hourBlock] = [];
       }
-
+      thisBooking.booked[date][hourBlock].push(table);
     }
+
+
+
   }
 
   render(element) {
