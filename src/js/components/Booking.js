@@ -1,4 +1,4 @@
-import { templates, select, settings } from '../settings.js';
+import { templates, select, settings, classNames } from '../settings.js';
 import { utils, } from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
@@ -91,7 +91,7 @@ class Booking {
 
     for (let item of eventsRepeat) {
       if (item.repeat == 'daily') {
-        for (let loopDate = minDate; loopDate <= maxDate;loopDate=utils.addDays(loopDate, 1))
+        for (let loopDate = minDate; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1))
           thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
       }
     }
@@ -116,9 +116,53 @@ class Booking {
       }
       thisBooking.booked[date][hourBlock].push(table);
     }
+  }
+  updateDOM() {
+
+    const thisBooking = this;
+
+    thisBooking.date = thisBooking.datePicker.value;
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+
+    // zmienna, która oznacza ze wszystkie stoliki są dostępne
+    let allAvailable = false;
 
 
+    if (
+      // dla daty nie ma obiektu
+      typeof thisBooking.booked[thisBooking.date] == 'undefined'
+      ||
+      // dla daty i godziny nie istnieje tablica
+      typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == 'undefined'
+    ) {
+      // czyli żaden stolik nie jest zajęty
+      allAvailable = true;
+    }
 
+
+    // iteruje przez wszystkie stoliki na mapie
+    for (let table of thisBooking.dom.tables) {
+      // pobiera się Id aktualnego stolika
+      let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      // sprawdza czy dataId jest liczbą, nawet jeśli bedzie to ciąg znaków, zmiana typu na liczbę!
+      if (!isNaN(tableId)) {
+        // konwertujemy ją na liczbę
+        tableId = parseInt(tableId);
+      }
+
+      // sprawdzenie, czy jest któryś stolik zajęty,
+      if (
+        !allAvailable
+        &&
+        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
+      ) {
+        // jeżli zajęty to przypisuje do tablicy
+        table.classList.add(classNames.booked.tableBooked);
+      } else {
+        // to usuwa się klasę  table Biiked
+        table.classList.remove(classNames.booking.tableBooked);
+      }
+    }
   }
 
   render(element) {
@@ -139,8 +183,7 @@ class Booking {
 
     thisBooking.dom.hourPicker = {};
     thisBooking.dom.hourPicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-
-
+    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
 
   }
   initWidgets() {
