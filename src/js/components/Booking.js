@@ -98,8 +98,8 @@ class Booking {
 
       thisBooking.booked[date][startHour].push(table);
 
-      for (let index = 0; index < 3; index++) {
-        console.log('loop', index);
+      for (let hourBlock = startHour; hourBlock < startHour+duration; hourBlock+=0.5) {
+        console.log('loop', hourBlock);
       }
 
     }
