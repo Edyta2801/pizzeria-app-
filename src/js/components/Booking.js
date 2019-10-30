@@ -77,10 +77,15 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.booked = {};
+
+    for (let item of bookings) {
+      thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
+    }
     for (let item of eventsCurrent) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
 
     }
+
     console.log('thisBooking.booked', thisBooking.booked);
   }
 
