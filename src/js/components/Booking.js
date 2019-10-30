@@ -97,6 +97,8 @@ class Booking {
     }
 
     console.log('thisBooking.booked', thisBooking.booked);
+
+    thisBooking.updateDOM();
   }
 
   makeBooked(date, hour, duration, table) {
@@ -157,9 +159,9 @@ class Booking {
         thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
       ) {
         // jeżli zajęty to przypisuje do tablicy
-        table.classList.add(classNames.booked.tableBooked);
+        table.classList.add(classNames.booking.tableBooked);
       } else {
-        // to usuwa się klasę  table Biiked
+        // to usuwa się klasę  tableBooked
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
@@ -191,8 +193,13 @@ class Booking {
 
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
+
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker.wrapper);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker.wrapper);
+
+    thisBooking.dom.wrapper.addEventListener('updated', function () {
+      thisBooking.updateDOM();
+    });
   }
 }
 export default Booking;
