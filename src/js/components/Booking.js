@@ -91,8 +91,8 @@ class Booking {
 
     for (let item of eventsRepeat) {
       if (item.repeat == 'daily') {
-        for (let loopDate = minDate; loopDate <= maxDate; utils.addDays(loopDate, 1))
-          thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
+        for (let loopDate = minDate; loopDate <= maxDate;loopDate=utils.addDays(loopDate, 1))
+          thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
       }
     }
 
