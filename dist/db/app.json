@@ -220,39 +220,26 @@
   "order": [
     {
       "testAddress": "test",
-      "totalPrice": 38,
+      "totalPrice": 20,
       "address": {},
       "phone": {},
-      "totalNumber": 2,
-      "subtotalPrice": 18,
-      "products": [
-        {
-          "id": "cake",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9
-        },
-        {
-          "id": "cake",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9
-        }
-      ],
+      "totalNumber": 0,
+      "subtotalPrice": 0,
+      "products": [],
       "id": 1
     },
     {
       "testAddress": "test",
-      "totalPrice": 29,
+      "totalPrice": 38,
       "address": {},
       "phone": {},
-      "totalNumber": 1,
-      "subtotalPrice": 9,
+      "totalNumber": 3,
+      "subtotalPrice": 18,
       "products": [
         {
           "id": "breakfast",
-          "amount": 1,
-          "price": 9,
+          "amount": 3,
+          "price": 18,
           "priceSingle": 9
         }
       ],
