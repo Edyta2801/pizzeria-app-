@@ -40,14 +40,14 @@ class Booking {
       ],
     };
 
-    console.log('getData params', params);
+    // console.log('getData params', params);
 
     const urls = {
       booking: settings.db.url + '/' + settings.db.booking + '?' + params.booking.join('&'),
       eventsCurrent: settings.db.url + '/' + settings.db.event + '?' + params.eventsCurrent.join('&'),
       eventsRepeat: settings.db.url + '/' + settings.db.event + '?' + params.eventsRepeat.join('&'),
     };
-    console.log('getData urls', urls);
+    // console.log('getData urls', urls);
 
     Promise.all([
       fetch(urls.booking),
@@ -96,7 +96,7 @@ class Booking {
       }
     }
 
-    console.log('thisBooking.booked', thisBooking.booked);
+    // console.log('thisBooking.booked', thisBooking.booked);
 
     thisBooking.updateDOM();
   }
@@ -110,7 +110,7 @@ class Booking {
 
     const startHour = utils.hourToNumber(hour);
     for (let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5) {
-      console.log('loop', hourBlock);
+      // console.log('loop', hourBlock);
 
 
       if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
