@@ -209,6 +209,23 @@ class Booking {
       console.log(reservedTable);
 
 
+      // input event listener to hourpicker input
+      thisBooking.hourPicker.dom.input.addEventListener('input', function () {
+
+        // START: if number of arguments currently passed to  thr function >0
+        if (reservedTable.length > 0) {
+          // remove class reservation for table
+          allTables[reservedTable - 1].classList.remove(classNames.booking.tableReservation);
+        }
+
+      });
+
+
+
+
+
+
+
     }
 
 
