@@ -173,21 +173,30 @@ class Booking {
     const thisBooking = this;
 
     const tables = document.querySelectorAll(select.booking.tables);
+
     for (let table of tables) {
       table.addEventListener('click', function () {
+
         if (table.classList.contains('booked')) {
           alert('Ten stolik jest już zajęty!');
+          console.log(table);
         } else {
+
           const activeTable = document.querySelector(select.booking.tables + '[data-table="' + thisBooking.table + '"]');
+          console.log(activeTable);
+
           if (activeTable) activeTable.classList.remove('booked');
           table.classList.add('booked');
+
+
           thisBooking.table = table.dataset.table;
+          console.log(table.dataset.table);
         }
       });
     }
   }
 
-  sendBooking(){
+  sendBooking() {
     const thisBooking = this;
 
     const url = settings.db.url + '/' + settings.db.booking;
@@ -217,20 +226,24 @@ class Booking {
       body: JSON.stringify(payload),
     };
     fetch(url, options)
-      .then(function(response){
+      .then(function (response) {
         return response.json();
-      }).then(function(parsedResponse){
+      }).then(function (parsedResponse) {
         console.log('parsedResponse', parsedResponse);
+
+
+        thisBooking.getData();
       });
 
-    thisBooking.getData();
+    // thisBooking.getData();
+    return alert('Order accepted!');
   }
 
 
   initReservation() {
     const thisBooking = this;
 
-    thisBooking.dom.form.addEventListener('submit', function(event){
+    thisBooking.dom.form.addEventListener('submit', function (event) {
       event.preventDefault();
       thisBooking.sendBooking();
     });
