@@ -186,6 +186,47 @@ class Booking {
       });
     }
   }
+
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+    const payload = {
+      id: '',
+      date: thisBooking.datePicker.value,
+      hour: thisBooking.hourPicker.value,
+      table: parseInt(thisBooking.table),
+      duration: thisBooking.hoursAmount.value,
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
+      people: thisBooking.peopleAmount.value,
+      starters: [],
+    };
+
+    for (let starter of thisBooking.dom.starters) {
+      if (starter.checked === true) {
+        payload.starters.push(starter.value);
+      }
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+    fetch(url, options)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+
+    thisBooking.getData();
+  }
+
+
   initReservation() {
     const thisBooking = this;
 
@@ -194,9 +235,6 @@ class Booking {
       thisBooking.sendBooking();
     });
   }
-
-
-
 
   render(element) {
     const thisBooking = this;
