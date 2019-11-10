@@ -221,18 +221,16 @@ class Booking {
       });
 
 
+      // click event listener to datepicker input
+      thisBooking.datePicker.dom.input.addEventListener('click', function () {
 
-
-
-
-
+        // START:f datepicker input get active class
+        if (thisBooking.datePicker.dom.input.classList.contains('active')) {
+          // remove class reservation for table
+          allTables[reservedTable - 1].classList.remove(classNames.booking.tableReservation);
+        }
+      });
     }
-
-
-
-
-
-
 
   }
 
