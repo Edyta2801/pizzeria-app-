@@ -10,7 +10,7 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.makeReservation();
+    thisBooking.initTableListeners();
   }
 
   getData() {
@@ -168,71 +168,91 @@ class Booking {
     }
   }
 
-
-  makeReservation() {
+  initTableListeners() {
     const thisBooking = this;
 
-    // find al clickable tables(element that should react to clicking)
-    const allTables = thisBooking.dom.tables;
-    console.log(allTables);
-
-    let reservedTable = '';
-
-    // START LOOP: for each clickable single table
-    for (let singleTable of allTables) {
-
-      // START: if single table don't have booked class
-      if (!singleTable.classList.contains(classNames.booking.tableBooked)) {
-
-        // toggle reservation class on singleTable
-        singleTable.classList.toggle(classNames.booking.tableReservation);
-
-      }
-      // find all tables with class 'reservation'
-
-      const allReservedTables = document.querySelectorAll(select.booking.tableReserved);
-      console.log(allReservedTables);
-
-      //START LOOP: for each single reserved table
-      for (let singleReservedTable of allReservedTables) {
-
-        // START:if single reserved table ins;t single table not reserved
-        if (singleReservedTable !== singleTable) {
-
-          // remove class reservation for single reserved table
-          singleReservedTable.classList.remove(classNames.booking.tableReservation);
-        }
-      }
-      // find attribute for reserved table
-      reservedTable = singleTable.getAttribute('data-table');
-      thisBooking.singleTable = reservedTable;
-      console.log(reservedTable);
-
-
-      // input event listener to hourpicker input
-      thisBooking.hourPicker.dom.input.addEventListener('input', function () {
-
-        // START: if number of arguments currently passed to  thr function >0
-        if (reservedTable.length > 0) {
-          // remove class reservation for table
-          allTables[reservedTable - 1].classList.remove(classNames.booking.tableReservation);
-        }
-
-      });
-
-
-      // click event listener to datepicker input
-      thisBooking.datePicker.dom.input.addEventListener('click', function () {
-
-        // START:f datepicker input get active class
-        if (thisBooking.datePicker.dom.input.classList.contains('active')) {
-          // remove class reservation for table
-          allTables[reservedTable - 1].classList.remove(classNames.booking.tableReservation);
+    const tables = document.querySelectorAll(select.booking.tables);
+    for (let table of tables) {
+      table.addEventListener('click', function () {
+        if (table.classList.contains('booked')) {
+          alert('Ten stolik jest już zajęty!');
+        } else {
+          const activeTable = document.querySelector(select.booking.tables + '[data-table="' + thisBooking.table + '"]');
+          if (activeTable) activeTable.classList.remove('booked');
+          table.classList.add('booked');
+          thisBooking.table = table.dataset.table;
         }
       });
     }
-
   }
+
+
+
+
+  // makeReservation() {
+  //   const thisBooking = this;
+
+  //   // find al clickable tables(element that should react to clicking)
+  //   const allTables = thisBooking.dom.tables;
+  //   console.log(allTables);
+
+  //   let reservedTable = '';
+
+  //   // START LOOP: for each clickable single table
+  //   for (let singleTable of allTables) {
+
+  //     // START: if single table don't have booked class
+  //     if (!singleTable.classList.contains(classNames.booking.tableBooked)) {
+
+  //       // toggle reservation class on singleTable
+  //       singleTable.classList.toggle(classNames.booking.tableReservation);
+
+  //     }
+  //     // find all tables with class 'reservation'
+
+  //     const allReservedTables = document.querySelectorAll(select.booking.tableReserved);
+  //     console.log(allReservedTables);
+
+  //     //START LOOP: for each single reserved table
+  //     for (let singleReservedTable of allReservedTables) {
+
+  //       // START:if single reserved table ins;t single table not reserved
+  //       if (singleReservedTable !== singleTable) {
+
+  //         // remove class reservation for single reserved table
+  //         singleReservedTable.classList.remove(classNames.booking.tableReservation);
+  //       }
+  //     }
+  //     // find attribute for reserved table
+  //     reservedTable = singleTable.getAttribute('data-table');
+  //     thisBooking.singleTable = reservedTable;
+  //     console.log(reservedTable);
+
+
+  //     // input event listener to hourpicker input
+  //     thisBooking.hourPicker.dom.input.addEventListener('input', function () {
+
+  //       // START: if number of arguments currently passed to  thr function >0
+  //       if (reservedTable.length > 0) {
+  //         // remove class reservation for table
+  //         allTables[reservedTable - 1].classList.remove(classNames.booking.tableReservation);
+  //       }
+
+  //     });
+
+
+  //     // click event listener to datepicker input
+  //     thisBooking.datePicker.dom.input.addEventListener('click', function () {
+
+  //       // START:f datepicker input get active class
+  //       if (thisBooking.datePicker.dom.input.classList.contains('active')) {
+  //         // remove class reservation for table
+  //         allTables[reservedTable - 1].classList.remove(classNames.booking.tableReservation);
+  //       }
+  //     });
+  //   }
+
+  // }
 
   render(element) {
     const thisBooking = this;
