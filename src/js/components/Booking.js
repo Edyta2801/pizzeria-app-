@@ -196,6 +196,8 @@ class Booking {
   }
 
 
+
+
   render(element) {
     const thisBooking = this;
 
@@ -215,6 +217,11 @@ class Booking {
     thisBooking.dom.hourPicker = {};
     thisBooking.dom.hourPicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
 
   }
   initWidgets() {
