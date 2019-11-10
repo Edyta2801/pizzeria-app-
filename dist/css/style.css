@@ -802,4 +802,155 @@ input.error, select.error {
   margin: 48px auto;
 }
 
+/* global */
+section,
+footer {
+  margin: auto;
+  width: 700px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* boxes */
+.boxes {
+  margin-top: 48px;
+}
+
+.boxes .card {
+  color: #fff;
+}
+
+.boxes .card a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.boxes .card a h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.65px;
+  transition: all 0.3s;
+  line-height: 50px;
+}
+
+.boxes .card a p {
+  opacity: 0;
+  transition: all 0.3s;
+  margin-bottom: 0;
+}
+
+.boxes .card a:hover h3 {
+  line-height: normal;
+}
+
+.boxes .card a:hover p {
+  margin-bottom: 16px;
+  opacity: 1;
+}
+
+.boxes .card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.boxes .opening {
+  width: 100%;
+  height: 120px;
+  background-color: #ff6b6b;
+}
+
+.boxes .opening h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.65px;
+}
+
+/* slider */
+.slider img {
+  width: 100%;
+  height: 193px;
+  object-fit: cover;
+}
+
+ol.carousel-indicators {
+  margin: 0 auto;
+}
+
+ol.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #cdcdcd;
+}
+
+ol.carousel-indicators li.active {
+  background-color: #333333;
+}
+
+.carousel {
+  padding-bottom: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-item h4 {
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+
+.carousel-item p,
+.carousel-item i {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  line-height: 23px;
+}
+
+/* gallery */
+.gallery img {
+  width: 100%;
+  height: 193px;
+  object-fit: cover;
+}
+
+.heart,
+.branch {
+  font-size: 30px;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.heart:hover,
+.branch:hover {
+  color: #ff6b6b;
+}
+
+.ovl {
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.ovl:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* footer */
+footer {
+  margin-bottom: 48px;
+}
+
+footer a {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
 /*# sourceMappingURL=style.css.map */
