@@ -236,42 +236,40 @@ class Booking {
     const thisBooking = this;
 
     const url = settings.db.url + '/' + settings.db.booking;
+
+    thisBooking.reservedTable = [...new Set(thisBooking.selectedTable)];
+
     const payload = {
-      id: '',
-      date: thisBooking.datePicker.value,
+      date: thisBooking.date,
       hour: thisBooking.hourPicker.value,
-      table: parseInt(thisBooking.table),
+      table: thisBooking.reservedTable,
+      ppl: thisBooking.peopleAmount.value,
       duration: thisBooking.hoursAmount.value,
       phone: thisBooking.dom.phone.value,
-      address: thisBooking.dom.address.value,
-      people: thisBooking.peopleAmount.value,
-      starters: [],
+      adress: thisBooking.dom.address.value,
+      starters: thisBooking.starters
     };
-
-    for (let starter of thisBooking.dom.starters) {
-      if (starter.checked === true) {
-        payload.starters.push(starter.value);
-      }
-    }
 
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     };
+
     fetch(url, options)
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
-      }).then(function (parsedResponse) {
+      })
+      .then(function(parsedResponse) {
         console.log('parsedResponse', parsedResponse);
 
-
+        thisBooking.selectedTable = [];
+        thisBooking.starters = [];
         thisBooking.getData();
       });
 
-    // thisBooking.getData();
     return alert('Order accepted!');
   }
 
