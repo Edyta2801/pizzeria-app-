@@ -9,6 +9,7 @@ class Booking {
     const thisBooking = this;
     thisBooking.render(element);
     thisBooking.initWidgets();
+    thisBooking.initActions();
     thisBooking.getData();
     thisBooking.initTableListeners();
     thisBooking.initReservation();
@@ -152,6 +153,7 @@ class Booking {
       if (!isNaN(tableId)) {
         // konwertujemy ją na liczbę
         tableId = parseInt(tableId);
+        console.log(tableId);
       }
 
       // sprawdzenie, czy jest któryś stolik zajęty,
@@ -174,23 +176,57 @@ class Booking {
 
     const tables = document.querySelectorAll(select.booking.tables);
 
+
+
     for (let table of tables) {
       table.addEventListener('click', function () {
 
+
         if (table.classList.contains('booked')) {
           alert('Ten stolik jest już zajęty!');
-          console.log(table);
         } else {
 
           const activeTable = document.querySelector(select.booking.tables + '[data-table="' + thisBooking.table + '"]');
-          console.log(activeTable);
 
-          if (activeTable) activeTable.classList.remove('booked');
+          if (activeTable)
+            activeTable.classList.remove('booked');
+
           table.classList.add('booked');
 
 
           thisBooking.table = table.dataset.table;
-          console.log(table.dataset.table);
+
+        }
+      });
+    }
+  }
+
+  initReservation() {
+    const thisBooking = this;
+
+    thisBooking.selectedTable = [];
+
+    for (let table of thisBooking.dom.tables) {
+      table.addEventListener('click', function () {
+        if (!table.classList.contains(classNames.booking.tableBooked)) {
+          table.classList.toggle(classNames.booking.tableSelected);
+          if (!table.classList.contains(classNames.booking.tableSelected)) {
+            thisBooking.selectedTable.splice(thisBooking.selectedTable.indexOf(table.getAttribute(settings.booking.tableIdAttribute)), 1);
+          } else {
+            thisBooking.selectedTable.push(parseInt(table.getAttribute(settings.booking.tableIdAttribute)));
+          }
+        }
+      });
+    }
+
+    thisBooking.starters = [];
+
+    for (let starter of thisBooking.dom.starters) {
+      starter.addEventListener('change', function () {
+        if (this.checked) {
+          thisBooking.starters.push(starter.value);
+        } else {
+          thisBooking.starters.splice(thisBooking.starters.indexOf(starter.value, 1));
         }
       });
     }
@@ -240,13 +276,39 @@ class Booking {
   }
 
 
-  initReservation() {
+  // initReservation() {
+  //   const thisBooking = this;
+
+  //   thisBooking.dom.form.addEventListener('submit', function (event) {
+  //     event.preventDefault();
+  //     thisBooking.sendBooking();
+  //   });
+  // }
+
+
+
+  initActions() {
     const thisBooking = this;
+
 
     thisBooking.dom.form.addEventListener('submit', function (event) {
       event.preventDefault();
+
+      if (!thisBooking.datePicker.dom.input.value) {
+        return alert('Select reservation day');
+      } else if (thisBooking.dom.tables == 0) {
+        return alert('Choose a free table!');
+      } else if (!thisBooking.dom.phone.value) {
+        return alert('Enter Your phone number!');
+      } else if (!thisBooking.dom.address.value) {
+        return alert('Enter Your address!');
+      }
+
+
       thisBooking.sendBooking();
+
     });
+
   }
 
   render(element) {
