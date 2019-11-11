@@ -259,10 +259,10 @@ class Booking {
     };
 
     fetch(url, options)
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(parsedResponse) {
+      .then(function (parsedResponse) {
         console.log('parsedResponse', parsedResponse);
 
         thisBooking.selectedTable = [];
@@ -274,16 +274,13 @@ class Booking {
   }
 
 
-  // initReservation() {
-  //   const thisBooking = this;
+  refreshTable() {
+    const thisBooking = this;
 
-  //   thisBooking.dom.form.addEventListener('submit', function (event) {
-  //     event.preventDefault();
-  //     thisBooking.sendBooking();
-  //   });
-  // }
-
-
+    for (let table of thisBooking.dom.tables) {
+      table.classList.remove(classNames.booking.tableSelected);
+    }
+  }
 
   initActions() {
     const thisBooking = this;
@@ -304,6 +301,7 @@ class Booking {
 
 
       thisBooking.sendBooking();
+      thisBooking.refreshTable();
 
     });
 
@@ -346,6 +344,13 @@ class Booking {
 
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
+    });
+    thisBooking.dom.hourPicker.addEventListener('updated', function () {
+      thisBooking.refreshTable();
+    });
+
+    thisBooking.dom.datePicker.addEventListener('change', function () {
+      thisBooking.refreshTable();
     });
   }
 }
