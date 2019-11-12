@@ -11,8 +11,36 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.initActions();
     thisBooking.getData();
-    thisBooking.initTableListeners();
+    // thisBooking.initTableListeners();
     thisBooking.initReservation();
+  }
+
+  render(wrapper) {
+    const thisBooking = this;
+
+    const generatedHTML = templates.bookingWidget();
+
+    thisBooking.dom = {};
+    thisBooking.dom.wrapper = wrapper;
+
+    thisBooking.dom.wrapper.innerHTML = generatedHTML;
+
+    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
+
+    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.datePicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+
+    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.hourPicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+    thisBooking.dom.formSubmitButton = thisBooking.dom.wrapper.querySelector(select.booking.formSubmit);
+
   }
 
   getData() {
@@ -307,32 +335,7 @@ class Booking {
 
   }
 
-  render(element) {
-    const thisBooking = this;
 
-    const generatedHTML = templates.bookingWidget();
-
-    thisBooking.dom = {};
-    thisBooking.dom.wrapper = element;
-
-    thisBooking.dom.wrapper.innerHTML = generatedHTML;
-
-    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
-
-    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
-    thisBooking.dom.datePicker = {};
-    thisBooking.dom.datePicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
-
-    thisBooking.dom.hourPicker = {};
-    thisBooking.dom.hourPicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-
-    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
-    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
-    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
-    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
-
-  }
   initWidgets() {
     const thisBooking = this;
 
