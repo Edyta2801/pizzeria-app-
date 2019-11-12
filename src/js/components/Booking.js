@@ -87,6 +87,7 @@ class Booking {
       thisBooking.dom.form.reset();
 
     });
+  }
 
   getData() {
     const thisBooking = this;
@@ -193,7 +194,17 @@ class Booking {
       if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
         thisBooking.booked[date][hourBlock] = [];
       }
-      thisBooking.booked[date][hourBlock].push(table);
+  
+      // jeśli obiekt 'table' nie jest tablicą
+      if (!Array.isArray(table)) {
+        //  dodaj nowy element 'table'
+        thisBooking.booked[date][hourBlock].push(table);
+      }
+      // jeśli obiekt 'table' jest tablicą
+      if (Array.isArray(table)) {
+        // zwróć tablicę w której będzie dodana tablica zawierająca 'table'
+        thisBooking.booked[date][hourBlock] = thisBooking.booked[date][hourBlock].concat(table);
+      }
     }
   }
   updateDOM() {
@@ -358,9 +369,9 @@ class Booking {
 
 
 
-  }
-
-
-
 }
+
+
+
+
 export default Booking;
