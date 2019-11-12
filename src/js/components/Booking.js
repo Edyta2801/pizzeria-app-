@@ -82,7 +82,7 @@ class Booking {
       }
 
 
-      thisBooking.sendBooking();
+      thisBooking.sendReservation();
       thisBooking.refreshTable();
       thisBooking.dom.form.reset();
 
@@ -194,7 +194,7 @@ class Booking {
       if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
         thisBooking.booked[date][hourBlock] = [];
       }
-  
+
       // jeśli obiekt 'table' nie jest tablicą
       if (!Array.isArray(table)) {
         //  dodaj nowy element 'table'
@@ -255,36 +255,13 @@ class Booking {
       }
     }
   }
+  refreshTable() {
+    const thisBooking = this;
 
-  // initTableListeners() {
-  //   const thisBooking = this;
-
-  //   const tables = document.querySelectorAll(select.booking.tables);
-
-
-
-  //   for (let table of tables) {
-  //     table.addEventListener('click', function () {
-
-
-  //       if (table.classList.contains('booked')) {
-  //         alert('Ten stolik jest już zajęty!');
-  //       } else {
-
-  //         const activeTable = document.querySelector(select.booking.tables + '[data-table="' + thisBooking.table + '"]');
-
-  //         if (activeTable)
-  //           activeTable.classList.remove('booked');
-
-  //         table.classList.add('booked');
-
-
-  //         thisBooking.table = table.dataset.table;
-
-  //       }
-  //     });
-  //   }
-  // }
+    for (let table of thisBooking.dom.tables) {
+      table.classList.remove(classNames.booking.tableSelected);
+    }
+  }
 
   initReservation() {
     const thisBooking = this;
@@ -317,7 +294,7 @@ class Booking {
     }
   }
 
-  sendBooking() {
+  sendReservation() {
     const thisBooking = this;
 
     const url = settings.db.url + '/' + settings.db.booking;
@@ -357,21 +334,6 @@ class Booking {
 
     return alert('Order accepted!');
   }
-
-
-  refreshTable() {
-    const thisBooking = this;
-
-    for (let table of thisBooking.dom.tables) {
-      table.classList.remove(classNames.booking.tableSelected);
-    }
-  }
-
-
-
 }
-
-
-
 
 export default Booking;
