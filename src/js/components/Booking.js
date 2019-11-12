@@ -49,8 +49,8 @@ class Booking {
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
 
-    thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker.wrapper);
-    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker.wrapper);
+    thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
@@ -68,7 +68,7 @@ class Booking {
     const thisBooking = this;
 
 
-    thisBooking.dom.form.addEventListener('click', function (event) {
+    thisBooking.dom.formSubmitButton.addEventListener('click', function (event) {
       event.preventDefault();
 
       if (!thisBooking.datePicker.dom.input.value) {
