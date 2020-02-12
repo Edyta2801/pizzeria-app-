@@ -217,66 +217,7 @@
       }
     }
   ],
-  "order": [
-    {
-      "testAddress": "test",
-      "totalPrice": 49,
-      "address": {},
-      "phone": {},
-      "totalNumber": 3,
-      "subtotalPrice": 29,
-      "products": [
-        {
-          "id": "breakfast",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9
-        },
-        {
-          "id": "salad",
-          "amount": 1,
-          "price": 10,
-          "priceSingle": 10
-        },
-        {
-          "id": "salad",
-          "amount": 1,
-          "price": 10,
-          "priceSingle": 10
-        }
-      ],
-      "id": 1
-    },
-    {
-      "testAddress": "test",
-      "totalPrice": 47,
-      "address": {},
-      "phone": {},
-      "totalNumber": 3,
-      "subtotalPrice": 27,
-      "products": [
-        {
-          "id": "breakfast",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9
-        },
-        {
-          "id": "salad",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9
-        },
-        {
-          "id": "salad",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9
-        }
-      ],
-      "id": 2
-    }
-  ],
+  "order": [],
   "event": [
     {
       "id": 1,
@@ -351,22 +292,64 @@
       ]
     },
     {
-      "date": true,
-      "hour": "17:30",
+      "date": "2020-02-12",
+      "hour": "12:00",
       "table": [
         1,
-        2,
-        3
+        2
       ],
       "ppl": 1,
       "duration": 1,
       "phone": "555",
-      "adress": "we",
+      "adress": "Ania",
+      "starters": [],
+      "id": 2
+    },
+    {
+      "date": true,
+      "hour": "12:00",
+      "table": [
+        1,
+        2
+      ],
+      "ppl": 1,
+      "duration": 1,
+      "phone": "555",
+      "adress": "Ania",
+      "starters": [
+        "bread"
+      ],
+      "id": 3
+    },
+    {
+      "date": true,
+      "hour": "19:00",
+      "table": [
+        2,
+        3
+      ],
+      "ppl": 3,
+      "duration": 2,
+      "phone": "444",
+      "adress": "Tomek",
+      "starters": [],
+      "id": 4
+    },
+    {
+      "date": true,
+      "hour": "0:00",
+      "table": [
+        1
+      ],
+      "ppl": 5,
+      "duration": 3,
+      "phone": "111",
+      "adress": "Ela",
       "starters": [
         "water",
         "bread"
       ],
-      "id": 2
+      "id": 5
     }
   ]
 }
