@@ -290,66 +290,6 @@
         "bread",
         "lemonWater"
       ]
-    },
-    {
-      "date": "2020-02-12",
-      "hour": "12:00",
-      "table": [
-        1,
-        2
-      ],
-      "ppl": 1,
-      "duration": 1,
-      "phone": "555",
-      "adress": "Ania",
-      "starters": [],
-      "id": 2
-    },
-    {
-      "date": true,
-      "hour": "12:00",
-      "table": [
-        1,
-        2
-      ],
-      "ppl": 1,
-      "duration": 1,
-      "phone": "555",
-      "adress": "Ania",
-      "starters": [
-        "bread"
-      ],
-      "id": 3
-    },
-    {
-      "date": true,
-      "hour": "19:00",
-      "table": [
-        2,
-        3
-      ],
-      "ppl": 3,
-      "duration": 2,
-      "phone": "444",
-      "adress": "Tomek",
-      "starters": [],
-      "id": 4
-    },
-    {
-      "date": true,
-      "hour": "0:00",
-      "table": [
-        1
-      ],
-      "ppl": 5,
-      "duration": 3,
-      "phone": "111",
-      "adress": "Ela",
-      "starters": [
-        "water",
-        "bread"
-      ],
-      "id": 5
     }
   ]
 }
