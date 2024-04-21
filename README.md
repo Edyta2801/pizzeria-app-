@@ -3,7 +3,7 @@
 > Pizzeria-website
 
 
-## See [DEMO](https://project-restaurant-pizzeria.herokuapp.com/)
+## See [DEMO](https://pizzeria-app-80f0eb41fd63.herokuapp.com/)
 
 ![](./pizzeria-home.png)
 
@@ -35,4 +35,4 @@ Subpage book a table:
 * table reservations will be made by choosing the date and time,
 * plan of restaurant tables will be displayed according to date and time,
 * each table will be marked as available or occupied,
-* customers will be able to easily choose the table they want to book, 
+* customers will be able to easily choose the table they want to book,
